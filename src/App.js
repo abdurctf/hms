@@ -1,18 +1,23 @@
-import logo from './logo.svg';
 import AppointmentsPage from './components/AppointmentsPage';
 import './App.css';
 
-function App() {
+
+
+export default function App() {
+ 
+
   return (
+    <body>
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <AppointmentsPage />
+        
+      <AppointmentsPage  />
+
         
         
       </header>
     </div>
+    </body>
   );
 }
 
-export default App;
