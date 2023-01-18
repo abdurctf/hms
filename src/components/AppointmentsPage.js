@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 
+
 export default function AppointmentsPage ({  deleteAppointment, updateAppointment })  {
   const [appointmentToEdit, setAppointmentToEdit] = useState(null);
-  const [appointmentsData, setAppointmentsData] = useState([]);
   const [editFormVisible, setEditFormVisible] = useState(false);
   const [appointments, setAppointments] = useState([]);
   const handleDelete = (id) => {
@@ -16,7 +16,7 @@ export default function AppointmentsPage ({  deleteAppointment, updateAppointmen
   }
 
   const handleUpdate = (id, updatedAppointment) => {
-    setAppointmentsData(appointmentsData.map(appointment => appointment.id !== id ? appointment : updatedAppointment));
+    setAppointments(appointments.map(appointment => appointment.id !== id ? appointment : updatedAppointment));
     setEditFormVisible(false);
   }
 console.log(appointments)
@@ -36,7 +36,9 @@ console.log(appointments)
 
   return (
     <div>
+      
       <h1>Appointments</h1>
+      
       <ul>
         {appointments.map(appointment => (
           <li key={appointment.id}>
@@ -59,16 +61,16 @@ console.log(appointments)
           }}
         >
           <label htmlFor="date">Date:</label>
-          <input type="date" name="date" value={appointmentToEdit.date} />
+          <input type="date" name="date" value={appointmentToEdit.date} onChange={e => setAppointmentToEdit({...appointmentToEdit, date: e.target.value})} />
 
           <br />
           <label htmlFor="time">Time:</label>
 
-          <input type="time" name="time" value={appointmentToEdit.time} />
+          <input type="time" name="time" value={appointmentToEdit.time} onChange={e => setAppointmentToEdit({...appointmentToEdit, time: e.target.value})} />
           <br />
           <label htmlFor="description">Description:</label>
 
-          <input type="text" name="description" value={appointmentToEdit.description} />
+          <input type="text" name="description" value={appointmentToEdit.description} onChange={e => setAppointmentToEdit({...appointmentToEdit, description: e.target.value})} />
           <br />
           <button type="submit">Update Appointment</button>
         </form>
@@ -88,6 +90,7 @@ console.log(appointments)
     <br />
     <button type="submit">Add Appointment</button>
   </form>
+  
   
 </div>
 );

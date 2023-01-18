@@ -1,11 +1,10 @@
+import { createRoot } from 'react-dom/client';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import './App.css';
 import AppointmentsPage from './components/AppointmentsPage';
 import appointments from './data';
 
-ReactDOM.render(
-  <AppointmentsPage appointments={appointments} />,
-  document.getElementById('root')
+createRoot(document.getElementById('root')).render(
+  <AppointmentsPage appointments={appointments} />
 );
